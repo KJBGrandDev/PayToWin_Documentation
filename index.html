@@ -26,6 +26,7 @@
     </a>
   </div>
 </header>
+<div id="read-progress" aria-hidden="true"></div>
 
 <div class="layout">
   <aside class="sidebar" id="sidebar">
@@ -91,8 +92,17 @@
         </div>
       </div>
 
+      <div class="pillar-nav">
+        <div class="pillar-pills">
+          <a class="pillar-pill" href="#pillar-design"><span>01</span> Game Design</a>
+          <a class="pillar-pill" href="#pillar-tech"><span>02</span> Technical</a>
+          <a class="pillar-pill" href="#pillar-record"><span>03</span> Project Record</a>
+        </div>
+        <button class="print-btn" id="print-btn" type="button">Print / Save PDF</button>
+      </div>
+
       <!-- ==================== PILLAR 1: GAME DESIGN ==================== -->
-      <div class="pillar-header">
+      <div class="pillar-header" id="pillar-design">
         <span class="pillar-num">01</span>
         <h2>Game Design</h2>
       </div>
@@ -380,7 +390,7 @@
       </section>
 
       <!-- ==================== PILLAR 2: TECHNICAL ==================== -->
-      <div class="pillar-header">
+      <div class="pillar-header" id="pillar-tech">
         <span class="pillar-num">02</span>
         <h2>Technical</h2>
       </div>
@@ -474,7 +484,7 @@
       </section>
 
       <!-- ==================== PILLAR 3: PROJECT RECORD ==================== -->
-      <div class="pillar-header">
+      <div class="pillar-header" id="pillar-record">
         <span class="pillar-num">03</span>
         <h2>Project Record</h2>
       </div>
@@ -671,6 +681,8 @@
     </div>
   </main>
 </div>
+
+<button id="to-top" type="button" aria-label="Back to top">↑ Top</button>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Image preview">
   <img id="lightbox-img" alt="">

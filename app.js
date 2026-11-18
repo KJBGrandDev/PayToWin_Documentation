@@ -99,4 +99,19 @@
     });
   });
   if (lb) lb.addEventListener('click', closeLightbox);
+
+  // Reading progress bar, back-to-top & print button
+  const prog = document.getElementById('read-progress');
+  const toTop = document.getElementById('to-top');
+  const printBtn = document.getElementById('print-btn');
+  const updateScroll = () => {
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? Math.min(100, Math.max(0, (window.scrollY / docH) * 100)) : 0;
+    if (prog) prog.style.width = pct.toFixed(1) + '%';
+    if (toTop) toTop.classList.toggle('show', window.scrollY > 360);
+  };
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  updateScroll();
+  if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  if (printBtn) printBtn.addEventListener('click', () => window.print());
 })();
