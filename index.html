@@ -115,7 +115,7 @@
         <div class="card-grid">
           <div class="card">
             <div class="card-title">Core Hook <span class="tag warn">Risk vs. Economy</span></div>
-            <p>Every bullet and upgrade has a price. Players balance immediate ammo refills and Field Stims against permanent 5-tier weapon parts and elemental Special Ammo mods.</p>
+            <p>Every bullet and upgrade has a price. Players balance immediate ammo refills, Armor Plates, and inventory Field Stims against permanent 5-tier weapon part upgrades and weapon unlocks.</p>
           </div>
           <div class="card">
             <div class="card-title">Target Players <span class="tag ok">Ages 16+</span></div>
@@ -167,7 +167,7 @@
               <tr>
                 <td><strong>Riot Cop Armored Special</strong></td>
                 <td>Unholy Horde</td>
-                <td>Introduced from Day 3 onward; carries heavy durability and knockback resistance, rewarding armor-piercing Special Ammo and high-caliber fire.</td>
+                <td>Introduced from Day 3 onward; carries heavy durability and knockback resistance, rewarding upgraded weapon damage and high-caliber fire.</td>
               </tr>
               <tr>
                 <td><strong>Goliath Brute &amp; Day 6–7 Bosses</strong></td>
@@ -184,8 +184,7 @@
         <ul>
           <li><strong>7-Day Escalation Loop:</strong> Survive waves across Days 1–7 inside the active Combat Zone. Wave completion awards Salvage Cash and triggers a timed <strong>Buying Phase / Respite Sanctuary</strong> window.</li>
           <li><strong>Combat Zone Boundary:</strong> A 360° holographic perimeter surrounds the fight area. Leaving it triggers critical unholy damage warnings until the player returns inside.</li>
-          <li><strong>Salvage Armory (<code>[B]</code>):</strong> Opens during Buying Phase for full weapon unlocks, 5-tier gun part upgrades, 3-tier Elemental Special Ammo mods, Field Stims (added to inventory), and Armor Plates. During active combat, <code>[B]</code> opens <strong>Field Ammo Resupply</strong>.</li>
-          <li><strong>Dual-Stack Special Ammo (<code>[Q]</code>):</strong> Each weapon tracks Normal Ammo and equipped Special Ammo separately. Pressing <kbd>Q</kbd> reloads into Special Ammo (<em>Incendiary</em>, <em>Cryo-Volt</em>, <em>Corrosive AP</em>, or <em>Sanctified Blast</em>) and auto-reverts to Normal Ammo when depleted.</li>
+          <li><strong>Salvage Armory (<code>[B]</code>):</strong> Opens during Buying Phase with three tabs: <strong>Workbench &amp; Ammo</strong> (weapon unlocks, 5-tier gun part upgrades, and ammo packs), <strong>Field Stims</strong> (bought directly into inventory), and <strong>Armor Plates</strong>. During active combat, <code>[B]</code> opens <strong>Field Ammo Resupply</strong>.</li>
           <li><strong>Vitals &amp; Armor Rig:</strong> Health, Stamina, and a 500-point Ballistic Armor Rig govern survivability. Field Stims are stored in the inventory (up to 5 stacks) rather than injected instantly on purchase.</li>
         </ul>
 
@@ -271,7 +270,7 @@
               </tr>
               <tr>
                 <td><strong>Windows PC</strong></td>
-                <td><kbd>1</kbd>–<kbd>6</kbd> or <kbd>Scroll</kbd> Switch Weapon &middot; <kbd>R</kbd> Reload &middot; <kbd>Q</kbd> Swap Special Ammo</td>
+                <td><kbd>1</kbd>–<kbd>6</kbd> or <kbd>Scroll</kbd> Switch Weapon &middot; <kbd>R</kbd> Reload</td>
                 <td><span class="tag ok">Supported</span></td>
               </tr>
               <tr>
@@ -439,7 +438,7 @@
     ├── Testing/         # SurvivalDebugTester (F9/F10/F11 QA tools)
     ├── UI/              # TacticalArsenalStoreHUD, TacticalMinimapHUD, ApocalypseHUDController
     ├── VFX/             # Viscera pooling, tracers &amp; muzzle effects
-    └── Weapons/         # Weapon stats, recoil &amp; Special Ammo effects</pre>
+    └── Weapons/         # Weapon stats, ballistics &amp; recoil behavior</pre>
         </div>
       </section>
 
@@ -517,10 +516,10 @@
         </details>
 
         <details class="ver-item">
-          <summary><span>v2.0.50 – v2.0.57 — 7-Day Wave Progression, Night-Vision Minimap &amp; Special Ammo</span><span class="tag">Core Loop</span></summary>
+          <summary><span>v2.0.50 – v2.0.57 — 7-Day Wave Progression &amp; Night-Vision Minimap</span><span class="tag">Core Loop</span></summary>
           <ul>
             <li>Implemented 4-direction 45m squad spawns, Day 3 Riot Cop Armored Specials, and Respite Sanctuary beacon relocation.</li>
-            <li>Added enlarged minimap with translucent seconds timer, forward night-vision cone, and <kbd>Q</kbd> dual-stack Elemental Special Ammo.</li>
+            <li>Added enlarged minimap with translucent seconds timer and forward night-vision cone (plus prototype special ammo later replaced by inventory Field Stims).</li>
           </ul>
         </details>
 
@@ -586,7 +585,7 @@
               </tr>
               <tr data-cat="vfx">
                 <td><strong>Hovl Studio / KriptoFX / Knife / DinoFracture / ExplosiveLLC</strong></td>
-                <td>Muzzle flashes, elemental tracers, fracture &amp; combat animation/VFX packs</td>
+                <td>Muzzle flashes, tracers, fracture &amp; combat animation/VFX packs</td>
                 <td>Unity Asset Store</td>
                 <td>Asset Store Standard EULA</td>
               </tr>
