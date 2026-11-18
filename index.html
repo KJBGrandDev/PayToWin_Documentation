@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dusk of Morning Star — Game Design &amp; Technical Documentation</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2313171F' stroke='%23F2AD38' stroke-width='2'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='monospace' font-size='13' font-weight='700' fill='%23F2AD38'%3ED%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <button class="menu-btn" id="menu-btn" aria-label="Toggle navigation">Menu</button>
+    <div class="brand-mark">DMS</div>
+    <div class="brand-title">Dusk of Morning Star <span>// Docs</span></div>
+  </div>
+  <div class="topbar-meta">
+    <span class="pill hide-sm">Unity 2022.3.62f3 LTS</span>
+    <span class="pill brass">v2.0.60</span>
+    <a class="repo-btn" href="https://github.com/KJBGrandDev/PayToWin_Documentation" target="_blank" rel="noopener noreferrer">
+      GitHub Repo ↗
+    </a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="search-wrap">
+      <input class="search-input" id="toc-search" type="search" placeholder="Filter sections..." aria-label="Filter documentation sections">
+      <span class="search-kbd">/</span>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-heading">01 // Game Design</div>
+      <a class="toc-link active" href="#concept">Concept, Genre &amp; Players</a>
+      <a class="toc-link" href="#story">Storyline &amp; Characters</a>
+      <a class="toc-link" href="#mechanics">Mechanics, Arsenal &amp; Rules</a>
+      <a class="toc-link" href="#controls">Controls by Platform</a>
+      <a class="toc-link" href="#level-design">Level Design &amp; Maps</a>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-heading">02 // Technical</div>
+      <a class="toc-link" href="#engine-tools">Engine, Version &amp; Tools</a>
+      <a class="toc-link" href="#project-structure">Project &amp; Script Structure</a>
+      <a class="toc-link" href="#build-run">How to Build &amp; Run</a>
+      <a class="toc-link" href="#github-repo">GitHub Repository</a>
+      <a class="toc-link" href="#known-issues">Known Bugs &amp; Limitations</a>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-heading">03 // Project Record</div>
+      <a class="toc-link" href="#version-history">Version History &amp; Changelog</a>
+      <a class="toc-link" href="#asset-list">Asset List &amp; Licenses</a>
+      <a class="toc-link" href="#team-roles">Team Roles &amp; Contributions</a>
+      <a class="toc-link" href="#playtest-feedback">Playtest Feedback &amp; Fixes</a>
+      <a class="toc-link" href="#lessons-learned">Lessons Learned</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="hero">
+        <div class="hero-eyebrow">Official Game Design Document &amp; Technical Reference</div>
+        <h1>Dusk of Morning Star <span>— PAY TO WIN</span></h1>
+        <p>
+          A 7-day post-apocalyptic third-person survival horde shooter where sacred relics, tactical gunsmithing, and salvage economics decide whether the human retinue survives until dawn.
+        </p>
+        <div class="quick-stats">
+          <div class="stat-box">
+            <div class="stat-label">Genre</div>
+            <div class="stat-val">3rd-Person Horde Survival</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Engine</div>
+            <div class="stat-val">Unity 2022.3.62f3 (URP)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Target Platform</div>
+            <div class="stat-val">Windows PC (x86_64)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Current Build</div>
+            <div class="stat-val">Milestone v2.0.60</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PILLAR 1: GAME DESIGN ==================== -->
+      <div class="pillar-header">
+        <span class="pillar-num">01</span>
+        <h2>Game Design</h2>
+      </div>
+
+      <section class="doc-sec" id="concept">
+        <h3>Concept, Genre &amp; Target Players</h3>
+        <p>
+          <strong>Dusk of Morning Star</strong> (promotional title: <em>PAY TO WIN</em>) is a single-player, third-person tactical horde survival shooter built in Unity. Across seven escalating nights, players fight off waves of demonic infected, earn Salvage Cash (<code>$</code>) from every kill, and spend their earnings inside the <strong>Salvage Armory</strong> before the next dawn.
+        </p>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">Core Hook <span class="tag warn">Risk vs. Economy</span></div>
+            <p>Every bullet and upgrade has a price. Players balance immediate ammo refills and Field Stims against permanent 5-tier weapon parts and elemental Special Ammo mods.</p>
+          </div>
+          <div class="card">
+            <div class="card-title">Target Players <span class="tag ok">Ages 16+</span></div>
+            <p>Fans of wave-based survival shooters (<em>Left 4 Dead</em>, <em>Killing Floor</em>, <em>Call of Duty Zombies</em>) who enjoy high-impact gunplay, shop progression, and clear tactical HUD feedback.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="story">
+        <h3>Full Storyline &amp; Character Profiles</h3>
+        <p>
+          After the original biblical stone tablets are uncovered, the Pope grasps the artifact—binding Satan’s shackles as firmly as when God first cast him down. In retaliation, Hell descends upon the mortal world, unleashing an unholy plague that turns mankind into demonic zombies.
+        </p>
+        <p>
+          Conventional survival supplies (food, water, and trauma kits) can be scavenged from ruined settlements, but <strong>blessed bullets and sacred wards</strong> can only be replenished through liturgical prayer—leaving the retinue vulnerable during prayer windows. Accompanied by a five-person divine retinue, the player escorts the Covenant Ark across infected swamp ruins to reach the Pope’s holy sanctuary.
+        </p>
+
+        <h4>Character &amp; Enemy Profiles</h4>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Entity / Role</th>
+                <th>Faction</th>
+                <th>Narrative &amp; Gameplay Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>The Survivor (Player)</strong></td>
+                <td>Retinue Escort</td>
+                <td>Equipped with a tactical backpack rig, flashlight, and Salvage Armory link. Clears infected waves, guards the perimeter, and manages loadout upgrades.</td>
+              </tr>
+              <tr>
+                <td><strong>The Archbishop</strong></td>
+                <td>Divine Retinue</td>
+                <td>Bears the Sacred Covenant Ark &amp; Reliquary Container; anchors the sanctuary pilgrimage.</td>
+              </tr>
+              <tr>
+                <td><strong>Two Priests &amp; Two Nuns</strong></td>
+                <td>Divine Retinue</td>
+                <td>Perform liturgical prayers to sanctify ammunition and wards while relying on the player’s perimeter defense during vulnerable prayer intervals.</td>
+              </tr>
+              <tr>
+                <td><strong>Civilian Infected &amp; Rabid Rushers</strong></td>
+                <td>Unholy Horde</td>
+                <td>Primary Day 1–2 swarm units; Rushers close distance rapidly along flanking vectors, testing player stamina and target priority.</td>
+              </tr>
+              <tr>
+                <td><strong>Riot Cop Armored Special</strong></td>
+                <td>Unholy Horde</td>
+                <td>Introduced from Day 3 onward; carries heavy durability and knockback resistance, rewarding armor-piercing Special Ammo and high-caliber fire.</td>
+              </tr>
+              <tr>
+                <td><strong>Goliath Brute &amp; Day 6–7 Bosses</strong></td>
+                <td>Boss Tier</td>
+                <td>High-HP climax threats spawning on late waves (Day 6 Wave 4 and Day 7 Dual-Boss Wave 6), designed around Devastator RPG-7 bursts and full armor rigs.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="mechanics">
+        <h3>Gameplay Mechanics &amp; Rules</h3>
+        <ul>
+          <li><strong>7-Day Escalation Loop:</strong> Survive waves across Days 1–7 inside the active Combat Zone. Wave completion awards Salvage Cash and triggers a timed <strong>Buying Phase / Respite Sanctuary</strong> window.</li>
+          <li><strong>Combat Zone Boundary:</strong> A 360° holographic perimeter surrounds the fight area. Leaving it triggers critical unholy damage warnings until the player returns inside.</li>
+          <li><strong>Salvage Armory (<code>[B]</code>):</strong> Opens during Buying Phase for full weapon unlocks, 5-tier gun part upgrades, 3-tier Elemental Special Ammo mods, Field Stims (added to inventory), and Armor Plates. During active combat, <code>[B]</code> opens <strong>Field Ammo Resupply</strong>.</li>
+          <li><strong>Dual-Stack Special Ammo (<code>[Q]</code>):</strong> Each weapon tracks Normal Ammo and equipped Special Ammo separately. Pressing <kbd>Q</kbd> reloads into Special Ammo (<em>Incendiary</em>, <em>Cryo-Volt</em>, <em>Corrosive AP</em>, or <em>Sanctified Blast</em>) and auto-reverts to Normal Ammo when depleted.</li>
+          <li><strong>Vitals &amp; Armor Rig:</strong> Health, Stamina, and a 500-point Ballistic Armor Rig govern survivability. Field Stims are stored in the inventory (up to 5 stacks) rather than injected instantly on purchase.</li>
+        </ul>
+
+        <h4>6-Weapon Arsenal &amp; Salvage Economy</h4>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Slot &amp; Weapon</th>
+                <th>Unlock Cost</th>
+                <th>Caliber &amp; Pack Cost</th>
+                <th>Combat Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="wep-cell"><img class="wep-thumb" src="assets/wep_m4a1.png" alt="M4A1"><span><strong>1. M4A1 Assault Rifle</strong></span></div></td>
+                <td>Starter (Free)</td>
+                <td>5.56mm NATO &middot; <code>+60 / $75</code> (Starts <code>60 / 300</code>)</td>
+                <td>Balanced full-auto all-rounder</td>
+              </tr>
+              <tr>
+                <td><div class="wep-cell"><img class="wep-thumb" src="assets/wep_pistol.png" alt="9mm Pistol"><span><strong>2. Tactical 9mm Pistol</strong></span></div></td>
+                <td>Starter (Free)</td>
+                <td>9mm &middot; Unlimited Reserve</td>
+                <td>Reliable last-defense sidearm</td>
+              </tr>
+              <tr>
+                <td><div class="wep-cell"><img class="wep-thumb" src="assets/wep_shotgun.png" alt="Auto Shotgun 12G"><span><strong>3. Auto Shotgun 12G</strong></span></div></td>
+                <td><code>$950</code></td>
+                <td>12G Buckshot &middot; <code>+16 / $85</code></td>
+                <td>Close-range crowd breacher</td>
+              </tr>
+              <tr>
+                <td><div class="wep-cell"><img class="wep-thumb" src="assets/wep_minigun.png" alt="Vulcan Minigun"><span><strong>4. Vulcan Minigun</strong></span></div></td>
+                <td><code>$2,200</code></td>
+                <td>7.62mm Belt &middot; <code>+150 / $140</code></td>
+                <td>Sustained horde suppression</td>
+              </tr>
+              <tr>
+                <td><div class="wep-cell"><img class="wep-thumb" src="assets/wep_rpg.png" alt="Devastator RPG-7"><span><strong>5. Devastator RPG-7</strong></span></div></td>
+                <td><code>$2,600</code></td>
+                <td>85mm Warhead &middot; <code>+2 / $160</code></td>
+                <td>Boss &amp; Goliath armor breaker</td>
+              </tr>
+              <tr>
+                <td><div class="wep-cell"><img class="wep-thumb" src="assets/wep_chainsaw.png" alt="Apocalypse Chainsaw"><span><strong>6. Apocalypse Chainsaw</strong></span></div></td>
+                <td><code>$1,400</code></td>
+                <td>2-Stroke Edge &middot; Infinite Fuel</td>
+                <td>Overrun melee shredder</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="controls">
+        <h3>Controls for Every Platform</h3>
+        <div class="callout warn">
+          <strong>Platform Support Summary</strong>
+          Primary target is <strong>Windows PC (Keyboard &amp; Mouse)</strong>. Gamepad mapping is partially inherited via Invector’s input layer, while <strong>macOS, Linux, Console, and Mobile</strong> builds are not currently supported or QA-tested.
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Action / Binding</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Windows PC</strong></td>
+                <td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Move &middot; <kbd>Shift</kbd> Sprint &middot; <kbd>Space</kbd> Jump / Roll</td>
+                <td><span class="tag ok">Supported</span></td>
+              </tr>
+              <tr>
+                <td><strong>Windows PC</strong></td>
+                <td><kbd>Mouse</kbd> Aim &amp; Look &middot; <kbd>LMB</kbd> Fire / Melee &middot; <kbd>RMB</kbd> Aim Down Sights</td>
+                <td><span class="tag ok">Supported</span></td>
+              </tr>
+              <tr>
+                <td><strong>Windows PC</strong></td>
+                <td><kbd>1</kbd>–<kbd>6</kbd> or <kbd>Scroll</kbd> Switch Weapon &middot; <kbd>R</kbd> Reload &middot; <kbd>Q</kbd> Swap Special Ammo</td>
+                <td><span class="tag ok">Supported</span></td>
+              </tr>
+              <tr>
+                <td><strong>Windows PC</strong></td>
+                <td><kbd>B</kbd> Open/Close Salvage Armory (or Combat Ammo) &middot; <kbd>F</kbd> Refill All &middot; <kbd>G</kbd> Buy Active Ammo</td>
+                <td><span class="tag ok">Supported</span></td>
+              </tr>
+              <tr>
+                <td><strong>Windows PC (QA)</strong></td>
+                <td><kbd>F9</kbd> Toggle Unlock All Guns &middot; <kbd>F10</kbd> God Mode &middot; <kbd>F11</kbd> Round/Wave QA Menu &middot; <kbd>F7</kbd> Skip Timer</td>
+                <td><span class="tag warn">Dev / QA</span></td>
+              </tr>
+              <tr>
+                <td><strong>Gamepad / Controller</strong></td>
+                <td>Basic locomotion &amp; camera via Invector defaults; Shop UI requires mouse cursor</td>
+                <td><span class="tag warn">Partial</span></td>
+              </tr>
+              <tr>
+                <td><strong>macOS / Linux / Mobile</strong></td>
+                <td>No standalone build preset or touch HUD implemented</td>
+                <td><span class="tag bad">Not Supported</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="level-design">
+        <h3>Level Design with Maps &amp; Sketches</h3>
+        <p>
+          The primary playable environment (<code>World_OpenSurvival_Map.unity</code>) is structured around a central Respite Sanctuary campfire surrounded by swamp boardwalks, timber ruins, and foliage cover. During combat waves, a <strong>360° Holographic Barrier</strong> defines the engagement perimeter while infected squads fan out from four cardinal directions at a <code>45m</code> radius.
+        </p>
+
+        <div class="map-frame">
+          <svg viewBox="0 0 840 420" role="img" aria-label="Tactical Combat Zone and 4-Quadrant Spawn Map Sketch">
+            <defs>
+              <radialGradient id="zoneGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#2ecc8a" stop-opacity="0.10"/>
+                <stop offset="75%" stop-color="#f2ad38" stop-opacity="0.06"/>
+                <stop offset="100%" stop-color="#fa7373" stop-opacity="0.16"/>
+              </radialGradient>
+            </defs>
+            <rect width="840" height="420" fill="#080b0f"/>
+            <!-- Subtle Grid -->
+            <g stroke="#1b2330" stroke-width="1">
+              <line x1="0" y1="70" x2="840" y2="70"/><line x1="0" y1="140" x2="840" y2="140"/>
+              <line x1="0" y1="210" x2="840" y2="210"/><line x1="0" y1="280" x2="840" y2="280"/>
+              <line x1="0" y1="350" x2="840" y2="350"/>
+              <line x1="140" y1="0" x2="140" y2="420"/><line x1="280" y1="0" x2="280" y2="420"/>
+              <line x1="420" y1="0" x2="420" y2="420"/><line x1="560" y1="0" x2="560" y2="420"/>
+              <line x1="700" y1="0" x2="700" y2="420"/>
+            </g>
+
+            <!-- 45m Spawn Ring & Holographic Barrier -->
+            <circle cx="310" cy="210" r="165" fill="url(#zoneGrad)" stroke="#f2ad38" stroke-width="2.5" stroke-dasharray="10 6"/>
+            <circle cx="310" cy="210" r="115" fill="none" stroke="#2ecc8a" stroke-width="1.2" stroke-opacity="0.5"/>
+            <circle cx="310" cy="210" r="34" fill="rgba(46,204,138,0.16)" stroke="#2ecc8a" stroke-width="2"/>
+
+            <!-- Campfire & Beacon -->
+            <circle cx="310" cy="210" r="7" fill="#38ff14"/>
+            <text x="310" y="196" fill="#edf2f7" font-family="Chakra Petch, monospace" font-size="11" font-weight="700" text-anchor="middle">SANCTUARY BEACON</text>
+            <text x="310" y="232" fill="#2ecc8a" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle">Player + Retinue</text>
+
+            <!-- 4 Quadrant Spawn Vectors -->
+            <g fill="#fa7373" stroke="#fa7373" stroke-width="1.8">
+              <circle cx="310" cy="45" r="7"/><line x1="310" y1="56" x2="310" y2="95"/>
+              <circle cx="475" cy="210" r="7"/><line x1="464" y1="210" x2="425" y2="210"/>
+              <circle cx="310" cy="375" r="7"/><line x1="310" y1="364" x2="310" y2="325"/>
+              <circle cx="145" cy="210" r="7"/><line x1="156" y1="210" x2="195" y2="210"/>
+            </g>
+            <text x="310" y="29" fill="#fa7373" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">N SQUAD (45m Fan-Out)</text>
+            <text x="310" y="400" fill="#fa7373" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">S SQUAD (45m Fan-Out)</text>
+            <text x="64" y="206" fill="#fa7373" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">W SQUAD</text>
+            <text x="488" y="200" fill="#fa7373" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="start">E SQUAD</text>
+
+            <!-- Legend Panel -->
+            <rect x="575" y="42" width="235" height="336" rx="8" fill="#12171f" stroke="#263040"/>
+            <text x="595" y="72" fill="#f2ad38" font-family="Chakra Petch, monospace" font-size="13" font-weight="700">TACTICAL MAP KEY</text>
+            <circle cx="603" cy="104" r="6" fill="#38ff14"/>
+            <text x="618" y="108" fill="#edf2f7" font-size="12.5">Player &amp; Night-Vision Cone</text>
+            <rect x="597" y="128" width="12" height="12" fill="none" stroke="#f2ad38" stroke-width="2" stroke-dasharray="3 2"/>
+            <text x="618" y="138" fill="#edf2f7" font-size="12.5">360° Combat Zone Barrier</text>
+            <circle cx="603" cy="166" r="6" fill="#fa7373"/>
+            <text x="618" y="170" fill="#edf2f7" font-size="12.5">4-Direction Horde Spawn (45m)</text>
+            <circle cx="603" cy="196" r="6" fill="#2ecc8a"/>
+            <text x="618" y="200" fill="#edf2f7" font-size="12.5">Respite Sanctuary Relocation</text>
+
+            <line x1="595" y1="224" x2="790" y2="224" stroke="#263040"/>
+            <text x="595" y="250" fill="#b4c0d0" font-family="JetBrains Mono, monospace" font-size="11">DAY 1–2: Civilian + Rushers</text>
+            <text x="595" y="274" fill="#b4c0d0" font-family="JetBrains Mono, monospace" font-size="11">DAY 3–5: Riot Cop Specials</text>
+            <text x="595" y="298" fill="#b4c0d0" font-family="JetBrains Mono, monospace" font-size="11">DAY 6 W4: Boss Encounter</text>
+            <text x="595" y="322" fill="#f2ad38" font-family="JetBrains Mono, monospace" font-size="11">DAY 7 W6: Dual-Boss Climax</text>
+            <text x="595" y="354" fill="#7f8ea3" font-size="11">Scene: World_OpenSurvival_Map</text>
+          </svg>
+          <div class="caption">Figure 1: Schematic of <code>World_OpenSurvival_Map.unity</code> showing the 360° Combat Zone boundary, central Sanctuary Beacon, and 45m 4-direction horde spawn pattern.</div>
+        </div>
+
+        <div class="shot-grid">
+          <div class="shot-card">
+            <img src="assets/shot_campfire_clean.png" alt="Campfire Sanctuary Perimeter">
+            <div class="cap">Swamp sanctuary perimeter and restricted engagement barrier at dusk.</div>
+          </div>
+          <div class="shot-card">
+            <img src="assets/shot_combat_m4a1.png" alt="Day 1 M4A1 Combat HUD">
+            <div class="cap">Day 1 Wave 1 combat with enlarged minimap, night-vision cone, and $1,800 HUD.</div>
+          </div>
+          <div class="shot-card">
+            <img src="assets/shot_armory.png" alt="Salvage Armory Shop UI">
+            <div class="cap">High-contrast Salvage Armory UI showing Pine-Emerald affordable part cards.</div>
+          </div>
+          <div class="shot-card">
+            <img src="assets/shot_combat_day7_rpg.png" alt="Day 7 RPG-7 Heavy Wave">
+            <div class="cap">Late-wave heavy ordnance engagement with boundary alert &amp; horde radar.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PILLAR 2: TECHNICAL ==================== -->
+      <div class="pillar-header">
+        <span class="pillar-num">02</span>
+        <h2>Technical</h2>
+      </div>
+
+      <section class="doc-sec" id="engine-tools">
+        <h3>Engine, Version &amp; Tools Used</h3>
+        <ul>
+          <li><strong>Game Engine:</strong> Unity <code>2022.3.62f3 LTS</code></li>
+          <li><strong>Render Pipeline:</strong> Universal Render Pipeline (<code>URP 14.0.12</code>) with Built-in barrier shader compatibility restoration</li>
+          <li><strong>Language &amp; Runtime:</strong> C# (<code>.NET Framework 4.7.1</code> / Mono)</li>
+          <li><strong>UI &amp; Typography:</strong> Unity UGUI + <code>TextMesh Pro</code> (<code>SairaCondensed</code> Apocalypse fonts)</li>
+          <li><strong>Character Framework:</strong> Invector Third-Person Controller (<code>Invector-3rdPersonController</code>)</li>
+          <li><strong>Tooling &amp; Version Control:</strong> Visual Studio / VS Code, Git, Python / <code>imageio-ffmpeg</code> (trailer pipeline)</li>
+        </ul>
+      </section>
+
+      <section class="doc-sec" id="project-structure">
+        <h3>Project &amp; Script Structure</h3>
+        <p>Core gameplay code and custom assets live under <code>Assets/_Project/</code>, cleanly separated from third-party Asset Store packages:</p>
+        <div class="code-box">
+          <div class="code-hdr">
+            <span>Assets/_Project/ Directory Layout</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <pre>Assets/_Project/
+├── Animations/          # Character, weapon &amp; horde animation controllers
+├── Art/ &amp; Textures/     # Custom UI sprites, HUD icons &amp; decals
+├── Audio/               # BGM tracks &amp; weapon/gore/roar SFX
+├── Editor/              # Custom Unity Editor &amp; build/verification helpers
+├── Materials/ &amp; Shaders/# Holographic barrier &amp; URP surface shaders
+├── Prefabs/ &amp; Resources/# Pooled viscera, pickups, projectiles &amp; weapons
+├── Scenes/
+│   ├── World_OpenSurvival_Map.unity   # Main 7-day survival map
+│   └── Zombie_Combat_Testbed.unity    # Isolated combat &amp; AI testbed
+└── Scripts/
+    ├── Camera/          # Camera tracking &amp; ADS behavior
+    ├── CombatZone/      # WorldHordeManager, boundary barrier &amp; wave deck
+    ├── Core/            # Game state &amp; shared registries
+    ├── Enemies/         # ZombieHealth, flanker AI, Rushers, Riot Cop, Bosses
+    ├── Environment/     # Campfire &amp; sanctuary world props
+    ├── Inventory/       # SurvivalInventory (stacking, ammo &amp; stim consumables)
+    ├── Objectives/      # Sanctuary beacon &amp; wave objective tracking
+    ├── Player/          # PlayerWeaponQuickSwitch, flashlight, stamina &amp; vitals
+    ├── Retinue/         # Divine retinue NPC behaviors
+    ├── Scavenge/        # Lootable crates &amp; pickups
+    ├── Testing/         # SurvivalDebugTester (F9/F10/F11 QA tools)
+    ├── UI/              # TacticalArsenalStoreHUD, TacticalMinimapHUD, ApocalypseHUDController
+    ├── VFX/             # Viscera pooling, tracers &amp; muzzle effects
+    └── Weapons/         # Weapon stats, recoil &amp; Special Ammo effects</pre>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="build-run">
+        <h3>How to Build &amp; Run the Game</h3>
+        <ol>
+          <li>Install <strong>Unity <code>2022.3.62f3 LTS</code></strong> via Unity Hub with the <strong>Windows Build Support (IL2CPP or Mono)</strong> module.</li>
+          <li>Clone the repository and open the Unity project folder in Unity Hub.</li>
+          <li>Open <code>Assets/_Project/Scenes/World_OpenSurvival_Map.unity</code> in the Project window.</li>
+          <li>Press <strong>Play</strong> in the Unity Editor to test immediately (or open <strong>File &rarr; Build Settings</strong>, select <strong>PC, Mac &amp; Linux Standalone &rarr; Windows (x86_64)</strong>, verify <code>World_OpenSurvival_Map</code> is in <em>Scenes In Build</em>, and click <strong>Build And Run</strong>).</li>
+        </ol>
+        <div class="code-box">
+          <div class="code-hdr">
+            <span>Quick QA Testing Hotkeys (Play Mode)</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <pre>[F9]  Toggle Unlock All Guns (defaults ON for testing all 6 weapons)
+[F10] Toggle Immortal / God Mode (locks HP, Stamina, and Shield to full)
+[F11] Open QA Round &amp; Wave Jump Menu (jump to any Day 1–7, Wave, or Boss)</pre>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="github-repo">
+        <h3>Link to the GitHub Repo</h3>
+        <div class="card">
+          <div class="card-title">PayToWin_Documentation Repository <span class="tag ok">Public / GitHub Pages Ready</span></div>
+          <p style="margin-bottom: 12px;">Source documentation and deployment files are hosted at:</p>
+          <a class="repo-btn" href="https://github.com/KJBGrandDev/PayToWin_Documentation" target="_blank" rel="noopener noreferrer">
+            https://github.com/KJBGrandDev/PayToWin_Documentation ↗
+          </a>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="known-issues">
+        <h3>Known Bugs &amp; Limitations</h3>
+        <ul>
+          <li><strong>Windows PC Only:</strong> Input prompts, cursor locking, and shop navigation are tuned for Windows keyboard &amp; mouse; macOS, Linux, and mobile builds are untested.</li>
+          <li><strong>QA Unlock Toggle Default:</strong> In build <code>v2.0.60</code>, <code>SurvivalDebugTester.unlockAllWeapons</code> defaults to <code>true</code> for weapon showcase/testing. Press <kbd>F9</kbd> (or set to <code>false</code>) to test normal progression unlocking.</li>
+          <li><strong>Benign Compiler Warnings:</strong> Unity console reports 3 pre-existing unused-field warnings (<code>CS0414</code> in <code>ZombieHealth.cs</code>, <code>PlayerFlashlightController.cs</code>, and <code>TacticalArsenalStoreHUD.cs</code>) with 0 compile errors.</li>
+          <li><strong>Testbed Scene Scope:</strong> <code>Zombie_Combat_Testbed.unity</code> is intended for isolated combat tuning and does not represent the full 7-day open-survival progression flow.</li>
+        </ul>
+      </section>
+
+      <!-- ==================== PILLAR 3: PROJECT RECORD ==================== -->
+      <div class="pillar-header">
+        <span class="pillar-num">03</span>
+        <h2>Project Record</h2>
+      </div>
+
+      <section class="doc-sec" id="version-history">
+        <h3>Version History &amp; Changelog</h3>
+
+        <details class="ver-item" open>
+          <summary><span>v2.0.60 — QA Unlock-All-Guns Toggle ([F9] &amp; F11 Menu)</span><span class="tag ok">Latest</span></summary>
+          <ul>
+            <li>Added <code>SetAllWeaponsUnlocked(bool)</code> to <code>TacticalArsenalStoreHUD</code> with 3&times; reserve ammo seeding for slots 3–5.</li>
+            <li>Added <kbd>F9</kbd> hotkey and QA Menu toggle button inside <code>SurvivalDebugTester</code>.</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.59 — Promotional Trailer &amp; 1080p60 MP4 Render</span><span class="tag">Trailer</span></summary>
+          <ul>
+            <li>Built interactive 33-second motion-graphics trailer (<code>trailer/index.html</code>) and rendered <code>DuskOfMorningStar_Trailer.mp4</code> at <code>1920&times;1080</code> 60fps with mixed BGM and combat SFX.</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.58 — Cursor Relock, 60/300 Rifle Ammo &amp; High-Contrast Armory</span><span class="tag">UX / UI</span></summary>
+          <ul>
+            <li>Fixed cursor lingering after closing the shop via <code>ForceHideAndLockCursorNow()</code> and 3-frame end-of-frame relock.</li>
+            <li>Raised M4A1 starting reserve ammo from <code>60/180</code> to <code>60/300</code>.</li>
+            <li>Overhauled Salvage Armory color contrast and added Pine-Emerald affordability highlighting on gun part cards.</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.50 – v2.0.57 — 7-Day Wave Progression, Night-Vision Minimap &amp; Special Ammo</span><span class="tag">Core Loop</span></summary>
+          <ul>
+            <li>Implemented 4-direction 45m squad spawns, Day 3 Riot Cop Armored Specials, and Respite Sanctuary beacon relocation.</li>
+            <li>Added enlarged minimap with translucent seconds timer, forward night-vision cone, and <kbd>Q</kbd> dual-stack Elemental Special Ammo.</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.23 – v2.0.49 — Horde AI Flankers, Explosive Viscera &amp; AAA Vitals HUD</span><span class="tag">Combat &amp; HUD</span></summary>
+          <ul>
+            <li>Overhauled Rabid Rusher pursuit, predictive flankers, 14-slot pooled viscera/gore, and URP barrier shaders.</li>
+            <li>Iterated Vitals, Weapon Bay, and Combat Countdown HUDs through playtesting.</li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="doc-sec" id="asset-list">
+        <h3>Asset List with Licenses &amp; Sources</h3>
+        <div class="filter-row" role="group" aria-label="Filter assets by category">
+          <button class="filter-btn active" data-cat="all">All Assets</button>
+          <button class="filter-btn" data-cat="art">Synty / 3D Art</button>
+          <button class="filter-btn" data-cat="tech">Controller / AI</button>
+          <button class="filter-btn" data-cat="vfx">VFX &amp; Post-FX</button>
+          <button class="filter-btn" data-cat="unity">Unity Packages</button>
+        </div>
+
+        <div class="table-wrap">
+          <table id="asset-table">
+            <thead>
+              <tr>
+                <th>Asset / Package</th>
+                <th>Usage in Project</th>
+                <th>Source</th>
+                <th>License</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-cat="art">
+                <td><strong>Synty Polygon Apocalypse &amp; InterfaceApocalypseHUD</strong></td>
+                <td>Environment props, weapons, HUD frames, weapon icons &amp; SairaCondensed fonts</td>
+                <td>Unity Asset Store (Synty Studios)</td>
+                <td>Asset Store Standard EULA</td>
+              </tr>
+              <tr data-cat="art">
+                <td><strong>PolygonZombies &amp; PolygonBossZombies</strong></td>
+                <td>Civilian infected, specials, and Boss Goliath zombie meshes</td>
+                <td>Unity Asset Store (Synty Studios)</td>
+                <td>Asset Store Standard EULA</td>
+              </tr>
+              <tr data-cat="art">
+                <td><strong>PolygonNatureBiomes, PolygonShops &amp; SimpleApocalypse</strong></td>
+                <td>Swamp terrain foliage, boardwalks, and survival camp architecture</td>
+                <td>Unity Asset Store (Synty Studios)</td>
+                <td>Asset Store Standard EULA</td>
+              </tr>
+              <tr data-cat="tech">
+                <td><strong>Invector 3rdPersonController</strong></td>
+                <td>Player third-person locomotion, aiming, and shooter foundation</td>
+                <td>Unity Asset Store (Invector)</td>
+                <td>Asset Store Standard EULA</td>
+              </tr>
+              <tr data-cat="tech">
+                <td><strong>Blaze AI / Emerald AI / Character Controller Pro</strong></td>
+                <td>AI behavior &amp; character movement reference packages in project</td>
+                <td>Unity Asset Store</td>
+                <td>Asset Store Standard EULA</td>
+              </tr>
+              <tr data-cat="vfx">
+                <td><strong>Hovl Studio / KriptoFX / Knife / DinoFracture / ExplosiveLLC</strong></td>
+                <td>Muzzle flashes, elemental tracers, fracture &amp; combat animation/VFX packs</td>
+                <td>Unity Asset Store</td>
+                <td>Asset Store Standard EULA</td>
+              </tr>
+              <tr data-cat="vfx">
+                <td><strong>PRISM Post-Processing</strong></td>
+                <td>Night atmosphere color grading &amp; bloom effects</td>
+                <td>Unity Asset Store</td>
+                <td>Asset Store Standard EULA</td>
+              </tr>
+              <tr data-cat="unity">
+                <td><strong>TextMesh Pro &amp; URP 14.0.12</strong></td>
+                <td>Crisp HUD text rendering and Universal Render Pipeline shaders</td>
+                <td>Unity Package Manager</td>
+                <td>Unity Companion License</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="team-roles">
+        <h3>Team Roles &amp; Contributions</h3>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">Kent Basalan <span class="tag brass">Lead Dev</span></div>
+            <p><strong>Game Developer &amp; Narrative Designer</strong> — Core C# gameplay architecture, 7-day horde progression, Salvage Armory economy, HUD systems, and Holy vs. Devil narrative worldbuilding.</p>
+          </div>
+          <div class="card">
+            <div class="card-title">Luis Pingul <span class="tag ok">Web</span></div>
+            <p><strong>Website</strong> — Documentation site engineering, GitHub Pages structure, interactive navigation, and responsive wasteland-tactical layout.</p>
+          </div>
+          <div class="card">
+            <div class="card-title">Xienna Pugoy &amp; Jushua Sanchez <span class="tag">Docs</span></div>
+            <p><strong>Documentation</strong> — Game Design Document compilation, mechanics specification, asset/license auditing, and playtest record curation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="playtest-feedback">
+        <h3>Playtest Feedback &amp; Changes Made</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Playtest Issue Reported</th>
+                <th>Root Cause</th>
+                <th>Implemented Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Player could not move or rotate camera immediately after closing the Shop.</td>
+                <td>UGUI pointer-up / Editor focus left cursor unlocked and selected button active.</td>
+                <td>Added <code>ForceHideAndLockCursorNow()</code> + 3-frame <code>WaitForEndOfFrame</code> relock &amp; <code>EventSystem</code> clear.</td>
+              </tr>
+              <tr>
+                <td>Field Stims injected immediately on buy instead of going to inventory.</td>
+                <td>Shop button triggered direct stat heal/boost rather than item grant.</td>
+                <td>Updated Field Stims to <code>BUY TO INVENTORY</code> via <code>SurvivalInventory</code> (max 5 stack).</td>
+              </tr>
+              <tr>
+                <td>Crosshair camouflaged in dark combat &amp; white circle artifact on rifle.</td>
+                <td>Low-contrast reticle tint and overlapping default aim sprite.</td>
+                <td>Switched combat crosshair to high-visibility neon green and cleaned rifle reticle layering.</td>
+              </tr>
+              <tr>
+                <td>Hard to spot ammo button, shop colors unreadable, and <code>60/180</code> ammo ran dry fast.</td>
+                <td>Low-contrast yellow/green palette and small starting reserve stacks.</td>
+                <td>Separated Titanium/Orange/Pine-Emerald palette, added <code>[G] BUY +60 AMMO</code>, raised M4A1 start to <code>60/300</code>, and highlighted affordable Part Cards.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="lessons-learned">
+        <h3>Lessons Learned</h3>
+        <ul>
+          <li><strong>Practicality Beats Over-Stylized UI:</strong> Early dark-yellow/olive shop palettes looked thematic on paper but failed readability under fast between-wave timers. High-contrast neutral backgrounds paired with restrained semantic accents (Emerald = affordable, Orange = next tier, Coral = locked) solved both clarity and theme.</li>
+          <li><strong>Verify Controls &amp; Cursor State at Every Menu Boundary:</strong> In third-person shooters, a single stray frame of unlocked cursor breaks combat flow. Centralizing menu-blocking checks (<code>AreAnyBlockingMenusOpen()</code>) eliminated stuck-input edge cases.</li>
+          <li><strong>Living Architecture Docs Save Iteration Time:</strong> Maintaining a single source of truth (<code>GAME_STATE.md</code>) alongside dedicated QA hotkeys (<kbd>F9</kbd>/<kbd>F10</kbd>/<kbd>F11</kbd>) cut playtest turnaround from minutes of wave grinding down to seconds.</li>
+        </ul>
+      </section>
+
+      <footer>
+        <span>Dusk of Morning Star &middot; Documentation v2.0.60</span>
+        <span>
+          <a href="https://github.com/KJBGrandDev/PayToWin_Documentation" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+        </span>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Image preview">
+  <img id="lightbox-img" alt="">
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
