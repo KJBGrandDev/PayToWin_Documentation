@@ -1,6 +1,6 @@
-# Dusk of Morning Star — Documentation Site (`docs-site`)
+# Pay to Win — Documentation Site (`docs-site`)
 
-Static web documentation (Game Design Document, Technical Reference, and Project Record) for **Dusk of Morning Star** (*PAY TO WIN*).
+Static web documentation (Game Design Document, Technical Reference, and Project Record) for **Pay to Win**.
 
 - **Repository**: https://github.com/KJBGrandDev/PayToWin_Documentation
 
