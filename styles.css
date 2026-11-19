@@ -653,6 +653,163 @@ details.ver-item[open] summary { margin-bottom: 10px; padding-bottom: 9px; borde
 #to-top.show { opacity: 1; pointer-events: auto; }
 #to-top:hover { border-color: var(--brass); color: var(--brass); }
 
+/* Interactive ICU Family Goalpost Ladder & Feature Cards */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 14px 0 18px;
+}
+.tag.new {
+  background: var(--emerald-dim);
+  color: var(--emerald);
+  border-color: rgba(46, 204, 138, 0.4);
+}
+.tag.cyan {
+  background: rgba(56, 184, 242, 0.12);
+  color: #5cc9fa;
+  border-color: rgba(56, 184, 242, 0.4);
+}
+
+.ladder-sim {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--brass);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 16px 0 20px;
+}
+.ladder-sim-hdr {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.ladder-sim-title {
+  font-family: "Chakra Petch", monospace;
+  font-weight: 700;
+  font-size: 14.5px;
+  letter-spacing: 0.04em;
+  color: var(--brass);
+  text-transform: uppercase;
+}
+.ladder-sim-readout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ladder-cash-pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brass);
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+.ladder-saved-pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(46, 204, 138, 0.4);
+  background: var(--emerald-dim);
+  color: var(--emerald);
+}
+.ladder-saved-pill.is-zero {
+  border-color: rgba(250, 115, 115, 0.45);
+  background: var(--crimson-dim);
+  color: var(--crimson);
+}
+.ladder-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.ladder-slider {
+  flex: 1 1 220px;
+  accent-color: var(--brass);
+  cursor: pointer;
+}
+.ladder-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ladder-preset {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.14s ease, color 0.14s ease;
+}
+.ladder-preset:hover {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+.ladder-rungs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ladder-rung {
+  display: grid;
+  grid-template-columns: 155px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 7px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border-strong);
+  font-size: 13.5px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.ladder-rung.is-saved {
+  background: rgba(16, 54, 38, 0.72);
+  border-color: rgba(46, 204, 138, 0.45);
+  border-left-color: var(--emerald);
+}
+.ladder-rung.is-spent {
+  background: rgba(68, 19, 22, 0.78);
+  border-color: rgba(250, 115, 115, 0.45);
+  border-left-color: var(--crimson);
+}
+.rung-who { font-weight: 600; color: var(--text); }
+.rung-proc { color: var(--text-muted); font-size: 12.5px; }
+.rung-status {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.ladder-rung.is-saved .rung-status { color: var(--emerald); }
+.ladder-rung.is-spent .rung-status { color: var(--crimson); }
+.ladder-verdict {
+  margin-top: 12px;
+  padding: 10px 13px;
+  border-radius: 7px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+
 footer {
   margin-top: 52px;
   padding-top: 20px;
@@ -678,6 +835,8 @@ footer a:hover { text-decoration: underline; }
   .sidebar.open { transform: translateX(0); }
   .main { margin-left: 0; padding: 24px 18px 70px; }
   .hero { padding: 22px 20px; }
+  .ladder-rung { grid-template-columns: 1fr auto; }
+  .ladder-rung .rung-proc { grid-column: 1 / -1; order: 3; }
 }
 
 @media print {

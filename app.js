@@ -114,4 +114,66 @@
   updateScroll();
   if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   if (printBtn) printBtn.addEventListener('click', () => window.print());
+
+  // Interactive ICU Family Goalpost Ladder Simulator
+  const slider = document.getElementById('ladder-slider');
+  const cashOut = document.getElementById('ladder-cash');
+  const savedOut = document.getElementById('ladder-saved');
+  const verdictOut = document.getElementById('ladder-verdict');
+  const rungs = Array.from(document.querySelectorAll('.ladder-rung[data-req]'));
+  const presets = Array.from(document.querySelectorAll('.ladder-preset'));
+
+  if (slider && rungs.length) {
+    let peakCash = parseInt(slider.value, 10) || 0;
+    const epilogues = [
+      '0 / 7 Saved — "Seven Empty Chairs": Even a long run saves nobody if leftover cash is under $1,000.',
+      '1 / 7 Saved — "A Child\'s Lonely Breath": Maya wakes alone in St. Jude\'s while six sibling beds go dark.',
+      '2 / 7 Saved — "Two Small Shadows": Maya and Leo survive the dawn and wait beside silent curtains.',
+      '3 / 7 Saved — "A Mother Left to Count the Cost": Elena wakes with Maya and Leo—the rest of the bills fell short.',
+      '4 / 7 Saved — "Half a Table Left": Arthur watches over Elena, Leo, and Maya with unbearable guilt.',
+      '5 / 7 Saved — "Five Pulses, Two Empty Beds": Five live, but baby Lily and Sarah remain unpaid.',
+      '6 / 7 Saved — "One Unpaid Heartbeat": Everyone breathes at sunrise except Sarah ($17,500 goal).',
+      '7 / 7 Saved — "Every Sin Paid in Full": All seven family members wake together. Your sacrifice bought every dawn.'
+    ];
+
+    const renderLadder = (cash, resetPeak = false) => {
+      if (resetPeak) peakCash = cash;
+      else peakCash = Math.max(peakCash, cash);
+
+      let saved = 0;
+      rungs.forEach(r => {
+        const req = parseInt(r.dataset.req, 10) || 0;
+        const stEl = r.querySelector('.rung-status');
+        r.classList.remove('is-saved', 'is-spent');
+        if (cash >= req) {
+          r.classList.add('is-saved');
+          saved++;
+          if (stEl) stEl.textContent = 'SAVED • BILL PAID';
+        } else if (peakCash >= req) {
+          r.classList.add('is-spent');
+          if (stEl) stEl.textContent = 'SPENT ($' + req.toLocaleString() + ')';
+        } else {
+          if (stEl) stEl.textContent = '$' + req.toLocaleString();
+        }
+      });
+
+      if (cashOut) cashOut.textContent = '$' + cash.toLocaleString();
+      if (savedOut) {
+        savedOut.textContent = saved + ' / 7 SAVED';
+        savedOut.classList.toggle('is-zero', saved === 0);
+      }
+      if (verdictOut) verdictOut.textContent = epilogues[Math.min(7, saved)];
+    };
+
+    slider.addEventListener('input', e => renderLadder(parseInt(e.target.value, 10) || 0, false));
+    presets.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = parseInt(btn.dataset.cash, 10) || 0;
+        const shouldReset = btn.dataset.resetPeak === 'true';
+        slider.value = String(val);
+        renderLadder(val, shouldReset);
+      });
+    });
+    renderLadder(peakCash, false);
+  }
 })();

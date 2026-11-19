@@ -20,7 +20,7 @@
   </div>
   <div class="topbar-meta">
     <span class="pill hide-sm">Unity 2022.3.62f3 LTS</span>
-    <span class="pill brass">v2.0.60</span>
+    <span class="pill brass">v2.0.68</span>
     <a class="repo-btn" href="https://github.com/KJBGrandDev/PayToWin_Documentation" target="_blank" rel="noopener noreferrer">
       GitHub Repo ↗
     </a>
@@ -39,7 +39,9 @@
       <div class="toc-heading">01 // Game Design</div>
       <a class="toc-link active" href="#concept">Concept, Genre &amp; Players</a>
       <a class="toc-link" href="#story">Storyline &amp; Characters</a>
+      <a class="toc-link" href="#family-stakes">Family ICU Ladder &amp; Endings</a>
       <a class="toc-link" href="#mechanics">Mechanics, Arsenal &amp; Rules</a>
+      <a class="toc-link" href="#field-manual">Field Manual &amp; UI Showcase</a>
       <a class="toc-link" href="#controls">Controls by Platform</a>
       <a class="toc-link" href="#level-design">Level Design &amp; Maps</a>
     </div>
@@ -67,10 +69,10 @@
     <div class="container">
 
       <div class="hero">
-        <div class="hero-eyebrow">Official Game Design Document &amp; Technical Reference</div>
+        <div class="hero-eyebrow">Official Game Design Document &amp; Technical Reference &middot; Every Bullet Costs Their Tomorrow</div>
         <h1>Pay to <span>Win</span></h1>
         <p>
-          A 7-day post-apocalyptic third-person survival horde shooter where sacred relics, tactical gunsmithing, and salvage economics decide whether the human retinue survives until dawn.
+          A 7-day third-person survival horde shooter where you enter the quarantined Dead Zone to pay the hospital bills keeping your 7 dying family members alive. Every bullet, weapon upgrade, and armor plate comes directly out of the cash left at death to save them.
         </p>
         <div class="quick-stats">
           <div class="stat-box">
@@ -82,12 +84,12 @@
             <div class="stat-val">Unity 2022.3.62f3 (URP)</div>
           </div>
           <div class="stat-box">
-            <div class="stat-label">Target Platform</div>
-            <div class="stat-val">Windows PC (x86_64)</div>
+            <div class="stat-label">Narrative Stakes</div>
+            <div class="stat-val">7 ICU Beds &middot; 8 Endings</div>
           </div>
           <div class="stat-box">
             <div class="stat-label">Current Build</div>
-            <div class="stat-val">Milestone v2.0.60</div>
+            <div class="stat-val">Milestone v2.0.68</div>
           </div>
         </div>
       </div>
@@ -110,72 +112,143 @@
       <section class="doc-sec" id="concept">
         <h3>Concept, Genre &amp; Target Players</h3>
         <p>
-          <strong>Pay to Win</strong> is a single-player, third-person tactical horde survival shooter built in Unity. Across seven escalating nights, players fight off waves of demonic infected, earn Salvage Cash (<code>$</code>) from every kill, and spend their earnings inside the <strong>Salvage Armory</strong> before the next dawn.
+          <strong>Pay to Win</strong> is a single-player, third-person tactical horde survival shooter built in Unity. Inside the quarantined swamp <strong>Dead Zone</strong>, every infected kill earns blood money (<code>$</code>) toward seven hospital ICU bills—creating a constant moral tension between spending cash to survive the next wave and leaving enough behind when you inevitably fall.
         </p>
         <div class="card-grid">
           <div class="card">
-            <div class="card-title">Core Hook <span class="tag warn">Risk vs. Economy</span></div>
-            <p>Every bullet and upgrade has a price. Players balance immediate ammo refills, Armor Plates, and inventory Field Stims against permanent 5-tier weapon part upgrades and weapon unlocks.</p>
+            <div class="card-title">Core Hook <span class="tag warn">Spend to Survive vs. Save Family</span></div>
+            <p>Spending in the <strong>Salvage Armory (<code>[B]</code>)</strong> buys guns, 5-star upgrades, healing Field Stims, and Armor Plates—but visibly drops your live <strong>ICU Family Ladder</strong> rungs from <span style="color:var(--emerald)">SAVED</span> back to <span style="color:var(--crimson)">SPENT</span>. Dying with under <code>$1,000</code> saves nobody, regardless of round reached.</p>
           </div>
           <div class="card">
             <div class="card-title">Target Players <span class="tag ok">Ages 16+</span></div>
-            <p>Fans of wave-based survival shooters (<em>Left 4 Dead</em>, <em>Killing Floor</em>, <em>Call of Duty Zombies</em>) who enjoy high-impact gunplay, shop progression, and clear tactical HUD feedback.</p>
+            <p>Fans of wave-based survival shooters (<em>Left 4 Dead</em>, <em>Killing Floor</em>, <em>Call of Duty Zombies</em>) who want high-impact gunplay paired with risk-reward resource tension and branching narrative endings.</p>
           </div>
         </div>
       </section>
 
       <section class="doc-sec" id="story">
-        <h3>Full Storyline &amp; Character Profiles</h3>
+        <h3>Full Storyline, Cutscene &amp; Character Profiles</h3>
         <p>
-          After the original biblical stone tablets are uncovered, the Pope grasps the artifact—binding Satan’s shackles as firmly as when God first cast him down. In retaliation, Hell descends upon the mortal world, unleashing an unholy plague that turns mankind into demonic zombies.
+          After a reckless night behind the wheel leaves all seven members of his family on life support behind hospital ICU glass, the protagonist is handed a medical bill he can never pay alone. Outside the waiting room, a mysterious stranger offers an impossible bargain: enter the demonic swamp <strong>Dead Zone</strong> and harvest bounties against the unholy plague—<em>trading his life and bullets for their tomorrow</em>.
         </p>
         <p>
-          Conventional survival supplies (food, water, and trauma kits) can be scavenged from ruined settlements, but <strong>blessed bullets and sacred wards</strong> can only be replenished through liturgical prayer—leaving the retinue vulnerable during prayer windows. Accompanied by a five-person divine retinue, the player escorts the Covenant Ark across infected swamp ruins to reach the Pope’s holy sanctuary.
+          Each game launch opens the first <code>PLAY</code> transition with a <strong>53-second voiced Story Intro Cutscene</strong> (<code>PayToWin_Story_Intro.mp4</code>), complete with an upper-right <code>SKIP STORY &gt;&gt;</code> button revealed after <code>3.0s</code> for returning players. Subsequent replays in the same sitting deploy straight into Day 1 without repeating the intro.
         </p>
 
-        <h4>Character &amp; Enemy Profiles</h4>
+        <h4>Family ICU Profiles &amp; Hostile Entities</h4>
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
                 <th>Entity / Role</th>
-                <th>Faction</th>
+                <th>Goalpost / Faction</th>
                 <th>Narrative &amp; Gameplay Role</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>The Survivor (Player)</strong></td>
-                <td>Retinue Escort</td>
-                <td>Equipped with a tactical backpack rig, flashlight, and Salvage Armory link. Clears infected waves, guards the perimeter, and manages loadout upgrades.</td>
+                <td>Guilt-Driven Debtor</td>
+                <td>Sole survivor of the crash. Fights through the swamp perimeter managing ammo, armor plates, Field Stims, and family medical debt.</td>
               </tr>
               <tr>
-                <td><strong>The Archbishop</strong></td>
-                <td>Divine Retinue</td>
-                <td>Bears the Sacred Covenant Ark &amp; Reliquary Container; anchors the sanctuary pilgrimage.</td>
+                <td><strong>1. Maya — Little Sister (9)</strong></td>
+                <td><code>$1,000</code> &middot; Bed 1</td>
+                <td>Emergency Blood Transfusion — First ICU threshold; dying below <code>$1,000</code> loses every member.</td>
               </tr>
               <tr>
-                <td><strong>Two Priests &amp; Two Nuns</strong></td>
-                <td>Divine Retinue</td>
-                <td>Perform liturgical prayers to sanctify ammunition and wards while relying on the player’s perimeter defense during vulnerable prayer intervals.</td>
+                <td><strong>2. Leo — Younger Brother (14)</strong></td>
+                <td><code>$2,250</code> &middot; Bed 2</td>
+                <td>Collapsed Lung Surgery — Second tier unlocked during strong early-wave discipline.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Elena — Mother</strong></td>
+                <td><code>$4,000</code> &middot; Bed 3</td>
+                <td>ICU Ventilator Care — Mid-tier milestone frequently weighed against Tier 1–2 weapon upgrades.</td>
+              </tr>
+              <tr>
+                <td><strong>4. Arthur — Father</strong></td>
+                <td><code>$6,500</code> &middot; Bed 4</td>
+                <td>Spinal Reconstruction — Inflection point where heavy weapon purchases risk reversing progress.</td>
+              </tr>
+              <tr>
+                <td><strong>5. Clara — Older Sister</strong></td>
+                <td><code>$9,500</code> &middot; Bed 5</td>
+                <td>Hemorrhage &amp; Organ Repair — Requires multi-day survival and restrained Armory spending.</td>
+              </tr>
+              <tr>
+                <td><strong>6. Lily — Infant Daughter (3)</strong></td>
+                <td><code>$13,000</code> &middot; Bed 6</td>
+                <td>Pediatric Neuro-Surgery — High-stakes late-run milestone reachable through headshot discipline.</td>
+              </tr>
+              <tr>
+                <td><strong>7. Sarah — Wife</strong></td>
+                <td><code>$17,500</code> &middot; Bed 7</td>
+                <td>Critical Heart Transplant — Ultimate capstone completing the <code>7 / 7</code> total salvation ending.</td>
               </tr>
               <tr>
                 <td><strong>Civilian Infected &amp; Rabid Rushers</strong></td>
                 <td>Unholy Horde</td>
-                <td>Primary Day 1–2 swarm units; Rushers close distance rapidly along flanking vectors, testing player stamina and target priority.</td>
+                <td>Swarming Day 1–2 units and fast flanking Rushers rewarding clean headshots (<code>+50%</code> Salvage bonus).</td>
               </tr>
               <tr>
-                <td><strong>Riot Cop Armored Special</strong></td>
-                <td>Unholy Horde</td>
-                <td>Introduced from Day 3 onward; carries heavy durability and knockback resistance, rewarding upgraded weapon damage and high-caliber fire.</td>
-              </tr>
-              <tr>
-                <td><strong>Goliath Brute &amp; Day 6–7 Bosses</strong></td>
-                <td>Boss Tier</td>
-                <td>High-HP climax threats spawning on late waves (Day 6 Wave 4 and Day 7 Dual-Boss Wave 6), designed around Devastator RPG-7 bursts and full armor rigs.</td>
+                <td><strong>Riot Cop Special &amp; Boss Goliaths</strong></td>
+                <td>Armored / Boss Tier</td>
+                <td>Day 3+ Riot Cops and Day 6–7 Bosses requiring Shotgun, Vulcan Minigun, and Devastator RPG-7 stopping power.</td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section class="doc-sec" id="family-stakes">
+        <h3>Family ICU Ladder, Expense Tally &amp; 8 Endings <span class="tag new">v2.0.67</span></h3>
+        <p>
+          Player survival without financial restraint is deliberately framed as a tragedy: reaching deep rounds only to bleed out with empty pockets leaves every ICU bed unpaid. Three interconnected UI systems enforce this core identity in real time and after death:
+        </p>
+        <div class="feature-grid">
+          <div class="card">
+            <div class="card-title">Top-Left Live ICU Ladder <span class="tag ok">FamilyGoalLadderHUD</span></div>
+            <p>Docked top-left during combat. Rises and turns <strong style="color:var(--emerald)">Emerald (SAVED)</strong> as cash climbs; immediately turns <strong style="color:var(--crimson)">Crimson (SPENT)</strong> whenever Armory spending drops you below a bed you previously reached.</p>
+          </div>
+          <div class="card">
+            <div class="card-title">"Who Have You Saved?" Tally <span class="tag brass">PlayerDeathHUD</span></div>
+            <p>Upon death, clicking <strong>WHO HAVE YOU SAVED?</strong> opens a categorized ledger itemizing <em>Total Earned</em>, <em>Weapons</em>, <em>Upgrades</em>, <em>Ammo</em>, and <em>Armor &amp; Stims</em> against all 7 ICU hospital bills.</p>
+          </div>
+          <div class="card">
+            <div class="card-title">"The Story After You Died" <span class="tag cyan">8 Unique Endings</span></div>
+            <p>Computes which beds survived from final leftover cash (<code>0/7</code> up to <code>7/7</code>) and presents a tailored epilogue naming exact survivors, lost members, Day reached, and unspent payout.</p>
+          </div>
+        </div>
+
+        <div class="ladder-sim" id="ladder-simulator">
+          <div class="ladder-sim-hdr">
+            <div class="ladder-sim-title">Interactive Simulator: Live ICU Goalpost Trade-Off</div>
+            <div class="ladder-sim-readout">
+              <span class="ladder-cash-pill" id="ladder-cash">$5,015</span>
+              <span class="ladder-saved-pill" id="ladder-saved">3 / 7 SAVED</span>
+            </div>
+          </div>
+          <div class="ladder-controls">
+            <input class="ladder-slider" id="ladder-slider" type="range" min="0" max="18000" step="25" value="5015" aria-label="Simulate Cash at Death">
+            <div class="ladder-presets">
+              <button class="ladder-preset" type="button" data-cash="0" data-reset-peak="true">$0 (Reset)</button>
+              <button class="ladder-preset" type="button" data-cash="5015" data-reset-peak="true">$5,015 (3 Saved)</button>
+              <button class="ladder-preset" type="button" data-cash="9500" data-reset-peak="false">$9,500 (5 Saved)</button>
+              <button class="ladder-preset" type="button" data-cash="2500" data-reset-peak="false">Spend Down &rarr; $2,500</button>
+              <button class="ladder-preset" type="button" data-cash="17500" data-reset-peak="false">$17,500 (All 7)</button>
+            </div>
+          </div>
+          <div class="ladder-rungs">
+            <div class="ladder-rung" data-req="17500"><span class="rung-who">7. Sarah (Wife)</span><span class="rung-proc">Critical Heart Transplant</span><span class="rung-status">$17,500</span></div>
+            <div class="ladder-rung" data-req="13000"><span class="rung-who">6. Lily (Daughter, 3)</span><span class="rung-proc">Pediatric Neuro-Surgery</span><span class="rung-status">$13,000</span></div>
+            <div class="ladder-rung" data-req="9500"><span class="rung-who">5. Clara (Older Sister)</span><span class="rung-proc">Hemorrhage &amp; Organ Repair</span><span class="rung-status">$9,500</span></div>
+            <div class="ladder-rung" data-req="6500"><span class="rung-who">4. Arthur (Father)</span><span class="rung-proc">Spinal Reconstruction</span><span class="rung-status">$6,500</span></div>
+            <div class="ladder-rung" data-req="4000"><span class="rung-who">3. Elena (Mother)</span><span class="rung-proc">ICU Ventilator Care</span><span class="rung-status">$4,000</span></div>
+            <div class="ladder-rung" data-req="2250"><span class="rung-who">2. Leo (Brother, 14)</span><span class="rung-proc">Collapsed Lung Surgery</span><span class="rung-status">$2,250</span></div>
+            <div class="ladder-rung" data-req="1000"><span class="rung-who">1. Maya (Sister, 9)</span><span class="rung-proc">Emergency Blood Transfusion</span><span class="rung-status">$1,000</span></div>
+          </div>
+          <div class="ladder-verdict" id="ladder-verdict">3 / 7 Saved &mdash; "A Mother Left to Count the Cost": Elena wakes with Maya and Leo.</div>
         </div>
       </section>
 
@@ -183,9 +256,11 @@
         <h3>Gameplay Mechanics &amp; Rules</h3>
         <ul>
           <li><strong>7-Day Escalation Loop:</strong> Survive waves across Days 1–7 inside the active Combat Zone. Wave completion awards Salvage Cash and triggers a timed <strong>Buying Phase / Respite Sanctuary</strong> window.</li>
-          <li><strong>Combat Zone Boundary:</strong> A 360° holographic perimeter surrounds the fight area. Leaving it triggers critical unholy damage warnings until the player returns inside.</li>
-          <li><strong>Salvage Armory (<code>[B]</code>):</strong> Opens during Buying Phase with three tabs: <strong>Workbench &amp; Ammo</strong> (weapon unlocks, 5-tier gun part upgrades, and ammo packs), <strong>Field Stims</strong> (bought directly into inventory), and <strong>Armor Plates</strong>. During active combat, <code>[B]</code> opens <strong>Field Ammo Resupply</strong>.</li>
-          <li><strong>Vitals &amp; Armor Rig:</strong> Health, Stamina, and a 500-point Ballistic Armor Rig govern survivability. Field Stims are stored in the inventory (up to 5 stacks) rather than injected instantly on purchase.</li>
+          <li><strong>Combat Zone Boundary:</strong> A 360° yellow caution-tape perimeter surrounds the fight area. Stepping outside starts a warning countdown before inflicting rapid damage—and resets cleanly whenever returning to Menu or restarting.</li>
+          <li><strong>Dual-Mode Salvage Armory (<code>[B]</code>):</strong> Opens during Buying Phase with three tabs: <strong>Workbench &amp; Ammo</strong> (weapon unlocks, 5-star gun part upgrades, and ammo packs), <strong>Field Stims</strong> (bought directly into Field Pack), and <strong>Armor Plates</strong> (<code>$120</code> per plate). During active combat, <code>[B]</code> triggers <strong>Quick Ammo Resupply</strong> (brief slow-mo reprieve, 15s cooldown); pressing <code>[F]</code> refills all carried guns in one click.</li>
+          <li><strong>Snappy Weapon &amp; Aim Handling:</strong> Includes aligned weapon slots <code>1–6</code>, camera-true heavy weapon aiming with close-range barrel sweep detection (preventing point-blank misses), and a fast <code>0.45s</code> Vulcan Minigun spin-up.</li>
+          <li><strong>Vitals, 5-Plate Armor Rig &amp; Field Pack (<code>[I]</code>):</strong> Health, Stamina, and a 5-plate blue Armor Rig absorb hits. Healing syringes, regen serums, stamina surges, and adrenaline shots are stored in the Backpack (<code>[I]</code> / <code>[TAB]</code>) for emergency use.</li>
+          <li><strong>Live 3D Title &amp; Clean Pause Reset:</strong> Opens with a live 3D campfire diorama title screen and includes a centered <strong>WARNING &middot; RESET PROGRESS?</strong> confirmation modal when abandoning a mid-run game to Main Menu.</li>
         </ul>
 
         <h4>6-Weapon Arsenal &amp; Salvage Economy</h4>
@@ -241,6 +316,40 @@
         </div>
       </section>
 
+      <section class="doc-sec" id="field-manual">
+        <h3>Beginner Field Manual &amp; Feature Showcase <span class="tag new">v2.0.66 – v2.0.68</span></h3>
+        <p>
+          Accessible anytime from both the Main Menu and Pause Menu via <strong>FIELD MANUAL</strong>, the new full-screen guidebook (<code>FieldManualGuidePanel.cs</code>) replaces technical jargon with large <code>26pt</code> plain-English guides readable by anyone, featuring category tabs (<code>ALL</code>, <code>GOAL</code>, <code>FIGHT</code>, <code>GEAR</code>, <code>END</code>), live keyword search, arrow-key navigation, and <strong>8 annotated visual reference boards</strong>.
+        </p>
+
+        <div class="shot-grid">
+          <div class="shot-card">
+            <img src="assets/shot_story_intro.png" alt="First-Time Story Intro Cutscene">
+            <div class="cap"><strong>Story Intro Cutscene (<code>v2.0.66</code>):</strong> Plays once per game launch with upper-right <code>SKIP STORY &gt;&gt;</code> after 3 seconds.</div>
+          </div>
+          <div class="shot-card">
+            <img src="assets/shot_family_ladder.png" alt="Live Top-Left Family Goalposts Ladder HUD">
+            <div class="cap"><strong>Live ICU Ladder HUD (<code>v2.0.67</code>):</strong> Tracks all 7 family hospital goals in real time top-left while fighting in the swamp.</div>
+          </div>
+          <div class="shot-card">
+            <img src="assets/shot_tally_board.png" alt="Who Have You Saved Post-Death Receipt">
+            <div class="cap"><strong>Who Have You Saved? (<code>v2.0.67</code>):</strong> Categorizes Weapons, Upgrades, Ammo, and Armor spending against final cash at death.</div>
+          </div>
+          <div class="shot-card">
+            <img src="assets/shot_afterlife_story.png" alt="The Story After You Died Epilogue">
+            <div class="cap"><strong>8 Dynamic Endings (<code>v2.0.67</code>):</strong> Personalized aftermath story generated from how many ICU family beds your final cash covered.</div>
+          </div>
+          <div class="shot-card">
+            <img src="assets/shot_field_manual.png" alt="Full-Screen Field Manual Overview">
+            <div class="cap"><strong>Full-Screen Field Manual (<code>v2.0.68</code>):</strong> Category filter rail, live search bar, glowing active row, and visual diagram showcase.</div>
+          </div>
+          <div class="shot-card">
+            <img src="assets/shot_field_manual_shop.png" alt="Field Manual Annotated Shop Guide">
+            <div class="cap"><strong>Annotated How-to-Play Slides (<code>v2.0.68</code>):</strong> Visual step callouts covering the Salvage Armory, 6 Weapons, Controls, and Endings.</div>
+          </div>
+        </div>
+      </section>
+
       <section class="doc-sec" id="controls">
         <h3>Controls for Every Platform</h3>
         <div class="callout warn">
@@ -275,7 +384,7 @@
               </tr>
               <tr>
                 <td><strong>Windows PC</strong></td>
-                <td><kbd>B</kbd> Open/Close Salvage Armory (or Combat Ammo) &middot; <kbd>F</kbd> Refill All &middot; <kbd>G</kbd> Buy Active Ammo</td>
+                <td><kbd>B</kbd> Open/Close Shop &middot; <kbd>F</kbd> Refill All Ammo (in Shop) &middot; <kbd>I</kbd> / <kbd>Tab</kbd> Backpack &middot; <kbd>Esc</kbd> Pause / Back</td>
                 <td><span class="tag ok">Supported</span></td>
               </tr>
               <tr>
@@ -301,7 +410,7 @@
       <section class="doc-sec" id="level-design">
         <h3>Level Design with Maps &amp; Sketches</h3>
         <p>
-          The primary playable environment (<code>World_OpenSurvival_Map.unity</code>) is structured around a central Respite Sanctuary campfire surrounded by swamp boardwalks, timber ruins, and foliage cover. During combat waves, a <strong>360° Holographic Barrier</strong> defines the engagement perimeter while infected squads fan out from four cardinal directions at a <code>45m</code> radius.
+          The primary playable swamp environment (<code>World_SwampSurvival_Map.unity</code> &amp; <code>World_OpenSurvival_Map.unity</code>) is centered around a campfire sanctuary surrounded by boardwalks, marsh grass, timber ruins, and foliage cover. During combat waves, a <strong>360° Holographic Barrier</strong> defines the engagement perimeter while infected squads fan out from four cardinal directions at a <code>45m</code> radius.
         </p>
 
         <div class="map-frame">
@@ -332,7 +441,7 @@
             <!-- Campfire & Beacon -->
             <circle cx="310" cy="210" r="7" fill="#38ff14"/>
             <text x="310" y="196" fill="#edf2f7" font-family="Chakra Petch, monospace" font-size="11" font-weight="700" text-anchor="middle">SANCTUARY BEACON</text>
-            <text x="310" y="232" fill="#2ecc8a" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle">Player + Retinue</text>
+            <text x="310" y="232" fill="#2ecc8a" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle">Player (Dead Zone)</text>
 
             <!-- 4 Quadrant Spawn Vectors -->
             <g fill="#fa7373" stroke="#fa7373" stroke-width="1.8">
@@ -400,45 +509,45 @@
           <li><strong>Game Engine:</strong> Unity <code>2022.3.62f3 LTS</code></li>
           <li><strong>Render Pipeline:</strong> Universal Render Pipeline (<code>URP 14.0.12</code>) with Built-in barrier shader compatibility restoration</li>
           <li><strong>Language &amp; Runtime:</strong> C# (<code>.NET Framework 4.7.1</code> / Mono)</li>
-          <li><strong>UI &amp; Typography:</strong> Unity UGUI + <code>TextMesh Pro</code> (<code>SairaCondensed</code> Apocalypse fonts)</li>
+          <li><strong>UI, Video &amp; Typography:</strong> Unity UGUI, <code>TextMesh Pro</code> (<code>SairaCondensed</code>), Unity <code>VideoPlayer</code> (<code>PayToWin_Story_Intro.mp4</code>), and runtime <code>Resources.Load&lt;Texture2D&gt;</code> Field Manual boards</li>
           <li><strong>Character Framework:</strong> Invector Third-Person Controller (<code>Invector-3rdPersonController</code>)</li>
-          <li><strong>Tooling &amp; Version Control:</strong> Visual Studio / VS Code, Git, Python / <code>imageio-ffmpeg</code> (trailer pipeline)</li>
+          <li><strong>Tooling &amp; Asset Pipelines:</strong> Visual Studio / VS Code, Git, Python / <code>Pillow</code> (annotated Field Manual guides) &amp; <code>imageio-ffmpeg</code> (38s trailer mix pipeline)</li>
         </ul>
       </section>
 
       <section class="doc-sec" id="project-structure">
         <h3>Project &amp; Script Structure</h3>
-        <p>Core gameplay code and custom assets live under <code>Assets/_Project/</code>, cleanly separated from third-party Asset Store packages:</p>
+        <p>Core gameplay code and custom assets live under <code>Assets/_Project/</code>, with standalone streaming cutscenes and Field Manual textures under <code>Assets/StreamingAssets/</code> and <code>Assets/Resources/FieldManual/</code>:</p>
         <div class="code-box">
           <div class="code-hdr">
-            <span>Assets/_Project/ Directory Layout</span>
+            <span>Unity Assets/ Directory Layout</span>
             <button class="copy-btn">Copy</button>
           </div>
-          <pre>Assets/_Project/
-├── Animations/          # Character, weapon &amp; horde animation controllers
-├── Art/ &amp; Textures/     # Custom UI sprites, HUD icons &amp; decals
-├── Audio/               # BGM tracks &amp; weapon/gore/roar SFX
-├── Editor/              # Custom Unity Editor &amp; build/verification helpers
-├── Materials/ &amp; Shaders/# Holographic barrier &amp; URP surface shaders
-├── Prefabs/ &amp; Resources/# Pooled viscera, pickups, projectiles &amp; weapons
-├── Scenes/
-│   ├── World_OpenSurvival_Map.unity   # Main 7-day survival map
-│   └── Zombie_Combat_Testbed.unity    # Isolated combat &amp; AI testbed
-└── Scripts/
-    ├── Camera/          # Camera tracking &amp; ADS behavior
-    ├── CombatZone/      # WorldHordeManager, boundary barrier &amp; wave deck
-    ├── Core/            # Game state &amp; shared registries
-    ├── Enemies/         # ZombieHealth, flanker AI, Rushers, Riot Cop, Bosses
-    ├── Environment/     # Campfire &amp; sanctuary world props
-    ├── Inventory/       # SurvivalInventory (stacking, ammo &amp; stim consumables)
-    ├── Objectives/      # Sanctuary beacon &amp; wave objective tracking
-    ├── Player/          # PlayerWeaponQuickSwitch, flashlight, stamina &amp; vitals
-    ├── Retinue/         # Divine retinue NPC behaviors
-    ├── Scavenge/        # Lootable crates &amp; pickups
-    ├── Testing/         # SurvivalDebugTester (F9/F10/F11 QA tools)
-    ├── UI/              # TacticalArsenalStoreHUD, TacticalMinimapHUD, ApocalypseHUDController
-    ├── VFX/             # Viscera pooling, tracers &amp; muzzle effects
-    └── Weapons/         # Weapon stats, ballistics &amp; recoil behavior</pre>
+          <pre>Assets/
+├── Resources/FieldManual/      # 8 annotated 1270x520 PNG how-to-play guides
+├── StreamingAssets/Video/      # Standalone runtime copy of PayToWin_Story_Intro.mp4
+└── _Project/
+    ├── Animations/             # Character, weapon &amp; horde animation controllers
+    ├── Art/ &amp; Textures/        # Custom UI sprites, HUD icons &amp; decals
+    ├── Audio/                  # BGM tracks &amp; weapon/gore/roar SFX
+    ├── Video/                  # Imported Story Intro cutscene VideoClip
+    ├── Editor/                 # Custom Unity Editor &amp; build/verification helpers
+    ├── Materials/ &amp; Shaders/   # Holographic barrier &amp; URP surface shaders
+    ├── Prefabs/ &amp; Resources/   # Pooled viscera, pickups, projectiles &amp; weapons
+    ├── Scenes/
+    │   ├── World_SwampSurvival_Map.unity   # Active swamp Dead Zone map
+    │   ├── World_OpenSurvival_Map.unity    # Extended open-world survival map
+    │   └── Zombie_Combat_Testbed.unity     # Isolated combat &amp; AI testbed
+    └── Scripts/
+        ├── Camera/             # Camera tracking &amp; ADS behavior
+        ├── CombatZone/         # WorldHordeManager, boundary barrier &amp; wave deck
+        ├── Enemies/            # ZombieHealth, flanker AI, Rushers, Riot Cop, Bosses
+        ├── Inventory/          # SurvivalInventory &amp; SurvivalInventoryUI ([I]/[TAB])
+        ├── Player/             # PlayerWeaponQuickSwitch, HeavyWeaponPostureController
+        ├── Testing/            # SurvivalDebugTester (F9/F10/F11 QA tools)
+        ├── UI/                 # MainMenuHUD, FieldManualGuidePanel, FamilyGoalLadderHUD,
+        │                       # TacticalArsenalStoreHUD, PlayerDeathHUD, TacticalMinimapHUD
+        └── Weapons/            # MinigunBarrelSpinner, weapon stats, ballistics &amp; recoil</pre>
         </div>
       </section>
 
@@ -447,8 +556,8 @@
         <ol>
           <li>Install <strong>Unity <code>2022.3.62f3 LTS</code></strong> via Unity Hub with the <strong>Windows Build Support (IL2CPP or Mono)</strong> module.</li>
           <li>Clone the repository and open the Unity project folder in Unity Hub.</li>
-          <li>Open <code>Assets/_Project/Scenes/World_OpenSurvival_Map.unity</code> in the Project window.</li>
-          <li>Press <strong>Play</strong> in the Unity Editor to test immediately (or open <strong>File &rarr; Build Settings</strong>, select <strong>PC, Mac &amp; Linux Standalone &rarr; Windows (x86_64)</strong>, verify <code>World_OpenSurvival_Map</code> is in <em>Scenes In Build</em>, and click <strong>Build And Run</strong>).</li>
+          <li>Open <code>Assets/_Project/Scenes/World_SwampSurvival_Map.unity</code> (or <code>World_OpenSurvival_Map.unity</code>) in the Project window.</li>
+          <li>Press <strong>Play</strong> in the Unity Editor to test immediately (or open <strong>File &rarr; Build Settings</strong>, select <strong>PC, Mac &amp; Linux Standalone &rarr; Windows (x86_64)</strong>, verify the active scene is in <em>Scenes In Build</em>, and click <strong>Build And Run</strong>).</li>
         </ol>
         <div class="code-box">
           <div class="code-hdr">
@@ -476,8 +585,8 @@
         <h3>Known Bugs &amp; Limitations</h3>
         <ul>
           <li><strong>Windows PC Only:</strong> Input prompts, cursor locking, and shop navigation are tuned for Windows keyboard &amp; mouse; macOS, Linux, and mobile builds are untested.</li>
-          <li><strong>QA Unlock Toggle Default:</strong> In build <code>v2.0.60</code>, <code>SurvivalDebugTester.unlockAllWeapons</code> defaults to <code>true</code> for weapon showcase/testing. Press <kbd>F9</kbd> (or set to <code>false</code>) to test normal progression unlocking.</li>
-          <li><strong>Benign Compiler Warnings:</strong> Unity console reports 3 pre-existing unused-field warnings (<code>CS0414</code> in <code>ZombieHealth.cs</code>, <code>PlayerFlashlightController.cs</code>, and <code>TacticalArsenalStoreHUD.cs</code>) with 0 compile errors.</li>
+          <li><strong>QA Unlock Toggle Default:</strong> In build <code>v2.0.68</code>, <code>SurvivalDebugTester.unlockAllWeapons</code> defaults to <code>true</code> for weapon showcase/testing. Press <kbd>F9</kbd> (or set to <code>false</code>) to test normal progression unlocking.</li>
+          <li><strong>Benign Compiler Warnings:</strong> Unity console reports 3 pre-existing unused-field warnings (<code>CS0414</code> in <code>ZombieHealth.cs</code>, <code>PlayerFlashlightController.cs</code>, and <code>TacticalArsenalStoreHUD.cs</code>) with 0 compile errors; all new systems compile with 0 errors and 0 warnings.</li>
           <li><strong>Testbed Scene Scope:</strong> <code>Zombie_Combat_Testbed.unity</code> is intended for isolated combat tuning and does not represent the full 7-day open-survival progression flow.</li>
         </ul>
       </section>
@@ -492,7 +601,53 @@
         <h3>Version History &amp; Changelog</h3>
 
         <details class="ver-item" open>
-          <summary><span>v2.0.60 — QA Unlock-All-Guns Toggle ([F9] &amp; F11 Menu)</span><span class="tag ok">Latest</span></summary>
+          <summary><span>v2.0.68 — Full-Screen Wuthering Waves-Style Field Manual &amp; Visual Guides</span><span class="tag ok">Latest</span></summary>
+          <ul>
+            <li>Replaced the small right-aligned briefing box with <code>FieldManualGuidePanel.cs</code> covering the full <code>1920&times;1080</code> viewport from both Main Menu and Pause Menu.</li>
+            <li>Added Category Filter Rail (<code>ALL</code>, <code>GOAL</code>, <code>FIGHT</code>, <code>GEAR</code>, <code>END</code>), live keyword search bar, keyboard arrow navigation, <code>26pt</code> kid-friendly plain-English copy, and 8 custom <code>1270&times;520</code> annotated visuals in <code>Resources/FieldManual/</code>.</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.67 — Top-Left Family Goalpost Ladder, Expense Tally &amp; 8 Dynamic Endings</span><span class="tag new">Story &amp; Stakes</span></summary>
+          <ul>
+            <li>Built <code>FamilyGoalLadderHUD.cs</code> anchored top-left showing real-time <span style="color:var(--emerald)">SAVED</span> vs. <span style="color:var(--crimson)">SPENT</span> shifts across all 7 ICU hospital beds (<code>$1,000</code>–<code>$17,500</code>).</li>
+            <li>Added categorized run spending counters in <code>TacticalArsenalStoreHUD</code> and replaced the death screen button with <strong>WHO HAVE YOU SAVED?</strong> and <strong>THE STORY AFTER YOU DIED</strong> (8 tailored epilogues).</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.66 — First-Time-Per-Launch Story Intro Cutscene &amp; 3s Skip Button</span><span class="tag">Cutscene</span></summary>
+          <ul>
+            <li>Integrated <code>PayToWin_Story_Intro.mp4</code> (53s narrated crash &amp; ICU backstory) on first <code>PLAY</code> per session via <code>HUD_StoryIntro_Canvas</code> with upper-right <code>SKIP STORY &gt;&gt;</code> appearing after 3 seconds.</li>
+            <li>Hardened <code>ZombieFracturePiecesGroup</code> against domain-reload bounds exceptions.</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.65 — Official 38s 60fps Escalation Gameplay Trailer</span><span class="tag">Trailer</span></summary>
+          <ul>
+            <li>Rebuilt <code>trailer/index.html</code> into a 7-act, 38-second <code>60fps</code> escalating-BPM trailer mixing real combat clips (M4A1, Shotgun, Minigun, RPG) with Armory upgrades and exported <code>PayToWin_Trailer.mp4</code>.</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.62 – v2.0.64 — Slot 2 Posture Alignment, Point-Blank Heavy Aim, Reset Warning &amp; 0.45s Minigun</span><span class="tag">Combat &amp; Flow</span></summary>
+          <ul>
+            <li>Fixed Combat Zone barrier countdown &amp; damage ticking during Menu/Death, centered the mid-run <strong>WARNING &middot; RESET PROGRESS?</strong> modal, and sped up Vulcan Minigun spin-up to <code>0.45s</code>.</li>
+            <li>Fixed close-range Minigun/RPG aim tilt via camera-true aim vector &amp; <code>1.45m</code> point-blank projectile sweep, and realigned Slots <code>1–6</code> after Slot 2 Pistol insertion.</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.61 — Standalone GitHub Pages Documentation Site Launch</span><span class="tag">Website</span></summary>
+          <ul>
+            <li>Created zero-build static GDD &amp; Technical Reference portal in <code>docs-site/</code> with search filter, lightbox, and SVG zone schematic.</li>
+          </ul>
+        </details>
+
+        <details class="ver-item">
+          <summary><span>v2.0.60 — QA Unlock-All-Guns Toggle ([F9] &amp; F11 Menu)</span><span class="tag">QA</span></summary>
           <ul>
             <li>Added <code>SetAllWeaponsUnlocked(bool)</code> to <code>TacticalArsenalStoreHUD</code> with 3&times; reserve ammo seeding for slots 3–5.</li>
             <li>Added <kbd>F9</kbd> hotkey and QA Menu toggle button inside <code>SurvivalDebugTester</code>.</li>
@@ -595,10 +750,16 @@
                 <td>Unity Asset Store</td>
                 <td>Asset Store Standard EULA</td>
               </tr>
+              <tr data-cat="art">
+                <td><strong>Field Manual Guide Boards &amp; Story Cutscene</strong></td>
+                <td>8 custom <code>1270&times;520</code> plain-English guide boards &amp; 53s narrated MP4 intro cutscene</td>
+                <td>In-House Production (Pillow + Unity VideoPlayer)</td>
+                <td>Project Original Assets</td>
+              </tr>
               <tr data-cat="unity">
-                <td><strong>TextMesh Pro &amp; URP 14.0.12</strong></td>
-                <td>Crisp HUD text rendering and Universal Render Pipeline shaders</td>
-                <td>Unity Package Manager</td>
+                <td><strong>TextMesh Pro, VideoPlayer &amp; URP 14.0.12</strong></td>
+                <td>Crisp HUD text, MP4 cutscene playback, and Universal Render Pipeline shaders</td>
+                <td>Unity Package Manager / Built-in</td>
                 <td>Unity Companion License</td>
               </tr>
             </tbody>
@@ -611,11 +772,11 @@
         <div class="card-grid">
           <div class="card">
             <div class="card-title">Kent Basalan <span class="tag brass">Lead Dev</span></div>
-            <p><strong>Game Developer &amp; Narrative Designer</strong> — Core C# gameplay architecture, 7-day horde progression, Salvage Armory economy, HUD systems, and Holy vs. Devil narrative worldbuilding.</p>
+            <p><strong>Game Developer &amp; Narrative Designer</strong> — Core C# gameplay architecture, 7-day horde progression, Salvage Armory economy, 7-bed Family ICU Goalpost Ladder, dynamic 8-ending epilogue narrative, Story Cutscene integration, and full-screen Field Manual.</p>
           </div>
           <div class="card">
             <div class="card-title">Luis Pingul <span class="tag ok">Web</span></div>
-            <p><strong>Website</strong> — Documentation site engineering, GitHub Pages structure, interactive navigation, and responsive wasteland-tactical layout.</p>
+            <p><strong>Website</strong> — Documentation site engineering, GitHub Pages structure, interactive ICU Ladder simulator, responsive layout, and feature gallery updates.</p>
           </div>
           <div class="card">
             <div class="card-title">Xienna Pugoy &amp; Jushua Sanchez <span class="tag">Docs</span></div>
@@ -637,6 +798,26 @@
             </thead>
             <tbody>
               <tr>
+                <td>Old Field Manual box looked cramped, small, and too technical for new players.</td>
+                <td>Small right-aligned <code>19.5pt</code> text panel lacked screenshots or structured navigation.</td>
+                <td>Rebuilt into full-screen <code>FieldManualGuidePanel.cs</code> with category rail, search, <code>26pt</code> kid-friendly text, and 8 annotated visual boards.</td>
+              </tr>
+              <tr>
+                <td>Survival felt disconnected from the family backstory until the end, and Menu reset warning leaned right.</td>
+                <td>No live debt tracker during waves; Pause reset lacked centered modal confirmation.</td>
+                <td>Added top-left <code>FamilyGoalLadderHUD</code>, death tally + 8 epilogues, and centered <code>WARNING &middot; RESET PROGRESS?</code> modal.</td>
+              </tr>
+              <tr>
+                <td>Shotgun &amp; heavy weapons had misaligned poses after Slot 2 Pistol insertion; Minigun spun up slowly &amp; missed point-blank.</td>
+                <td>Hardcoded slot indices, <code>1.75s</code> spin buffer, and close-collider camera aim parallax.</td>
+                <td>Dynamically bound slot indices, cut spin-up to <code>0.45s</code>, locked heavy aim to camera forward, and extended projectile sweep to <code>1.45m</code>.</td>
+              </tr>
+              <tr>
+                <td>Barrier countdown kept hurting/ticking on the live Main Menu or Death Screen.</td>
+                <td><code>Time.timeScale = 1f</code> for the 3D campfire menu allowed barrier timers to tick.</td>
+                <td>Paused zone countdown while Menu/Death UI is active and added full Zone <code>0</code> reset in <code>ReturnToMainMenuInstant()</code>.</td>
+              </tr>
+              <tr>
                 <td>Player could not move or rotate camera immediately after closing the Shop.</td>
                 <td>UGUI pointer-up / Editor focus left cursor unlocked and selected button active.</td>
                 <td>Added <code>ForceHideAndLockCursorNow()</code> + 3-frame <code>WaitForEndOfFrame</code> relock &amp; <code>EventSystem</code> clear.</td>
@@ -647,14 +828,9 @@
                 <td>Updated Field Stims to <code>BUY TO INVENTORY</code> via <code>SurvivalInventory</code> (max 5 stack).</td>
               </tr>
               <tr>
-                <td>Crosshair camouflaged in dark combat &amp; white circle artifact on rifle.</td>
-                <td>Low-contrast reticle tint and overlapping default aim sprite.</td>
-                <td>Switched combat crosshair to high-visibility neon green and cleaned rifle reticle layering.</td>
-              </tr>
-              <tr>
-                <td>Hard to spot ammo button, shop colors unreadable, and <code>60/180</code> ammo ran dry fast.</td>
-                <td>Low-contrast yellow/green palette and small starting reserve stacks.</td>
-                <td>Separated Titanium/Orange/Pine-Emerald palette, added <code>[G] BUY +60 AMMO</code>, raised M4A1 start to <code>60/300</code>, and highlighted affordable Part Cards.</td>
+                <td>Crosshair camouflaged in dark combat; <code>60/180</code> ammo ran dry too quickly.</td>
+                <td>Low-contrast reticle tint and small starting reserve stacks.</td>
+                <td>Switched crosshair to neon green, separated shop contrast palette, and raised M4A1 start to <code>60/300</code>.</td>
               </tr>
             </tbody>
           </table>
@@ -664,14 +840,15 @@
       <section class="doc-sec" id="lessons-learned">
         <h3>Lessons Learned</h3>
         <ul>
-          <li><strong>Practicality Beats Over-Stylized UI:</strong> Early dark-yellow/olive shop palettes looked thematic on paper but failed readability under fast between-wave timers. High-contrast neutral backgrounds paired with restrained semantic accents (Emerald = affordable, Orange = next tier, Coral = locked) solved both clarity and theme.</li>
-          <li><strong>Verify Controls &amp; Cursor State at Every Menu Boundary:</strong> In third-person shooters, a single stray frame of unlocked cursor breaks combat flow. Centralizing menu-blocking checks (<code>AreAnyBlockingMenusOpen()</code>) eliminated stuck-input edge cases.</li>
-          <li><strong>Living Architecture Docs Save Iteration Time:</strong> Maintaining a single source of truth (<code>GAME_STATE.md</code>) alongside dedicated QA hotkeys (<kbd>F9</kbd>/<kbd>F10</kbd>/<kbd>F11</kbd>) cut playtest turnaround from minutes of wave grinding down to seconds.</li>
+          <li><strong>Make Narrative Stakes Visible Every Second:</strong> Moving the 7 family hospital bills into the live top-left <strong>ICU Family Ladder</strong> turned abstract money numbers into an immediate emotional dilemma every time a player eyes an upgrade in the Shop.</li>
+          <li><strong>Design Onboarding for Zero-Confusion Reading:</strong> Combining crisp in-game screenshots with short, large-print plain English (<code>26pt</code>) in a searchable full-screen manual communicates mechanics far faster than dense paragraphs.</li>
+          <li><strong>Practicality Beats Over-Stylized UI:</strong> Early dark-yellow/olive shop palettes failed readability under between-wave timers; neutral slate surfaces paired with clear semantic colors (Emerald = saved/affordable, Amber = action, Crimson = spent/danger) solved legibility cleanly.</li>
+          <li><strong>Verify Controls &amp; Cursor State at Every Boundary:</strong> Centralizing blocking checks (<code>AreAnyBlockingMenusOpen()</code>) and resetting zone/horde state cleanly prevented stuck-input or background timer bugs across transitions.</li>
         </ul>
       </section>
 
       <footer>
-        <span>Pay to Win &middot; Documentation v2.0.60</span>
+        <span>Pay to Win &middot; Documentation v2.0.68</span>
         <span>
           <a href="https://github.com/KJBGrandDev/PayToWin_Documentation" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
         </span>
